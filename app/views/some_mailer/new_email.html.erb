@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>ОТправлено тестовое сообщение!</p>
+    <p>
+    Детали<br>
+    --------------------------
+    </p>
+    <p>Название: <%= @name %></p>
+    <p>Дата начала: <%= @begin %></p>
+    <p>Дата окончания: <%= @end %></p>
+    <p>Файлы:</p><br>
+    <% @files.each_pair do |name, path| %>
+      <a href="<%= path %>">
+        <%= name %>
+      </a>
+    <% end %>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+removeErrors();
+
+var json = JSON.parse('<%= j @data.errors.messages.to_json.html_safe %>');
+var prefix = 'mailer_data';
+
+$.each(json, function(key, value) {
+  var goal_field = $(`#${prefix}_${key}`);
+  goal_field.addClass('error-field');
+  classes = 'error-label text-md-left col-md-12 pt-1'
+  $(goal_field.parent()).append(
+    `<label class='${classes}'><span class='error-text'>${value[0]}</span></label>`
+  );
+});
+
+$('button:reset').on('click', function() {
+  removeErrors();
+});
+
+$('form').on('submit', function() {
+  removeErrors();
+})
+
+
+
+function removeErrors() {
+  $('.error-label').remove();
+  $('.error-field').removeClass('error-field');
+}

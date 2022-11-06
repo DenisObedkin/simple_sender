@@ -1,0 +1,20 @@
+// Place all the styles related to the sending controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.btn-width {
+  width: 100px !important;
+}
+
+.errors-container {
+  border: solid 1px red;
+  background: rgb(221, 161, 161);
+}
+
+.error-field {
+  border-color: red !important;
+}
+
+.error-text {
+  color: red !important;
+}

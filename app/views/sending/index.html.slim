@@ -1,0 +1,35 @@
+html
+  head
+    title Форма отправки сообщения
+    = stylesheet_link_tag :sending
+
+  body
+    h2.text-md-center.pt-5
+      = 'Заполните поля формы'
+
+    .container.col-md-3.text-md-center
+
+      = form_for :mailer_data, url: send_mail_url, remote: true do |form|
+        .form-group.d-flex.justify-content-between
+          = form.label :name, 'Название', class: 'col-form-label col-sm-3 text-sm-left',for: 'name'
+          = form.text_field :name, class: "form-control col-sm-9 #{'errors' if flash[:errors].present?}", placeholder: 'Введите название'
+
+        .form-group.d-flex.justify-content-between
+          = form.label :date_begin, 'Начало', class: 'col-form-label col-sm-3 text-sm-left', for: 'date_begin'
+          = form.date_field :date_begin, class: 'form-control col-sm-9', placeholder: 'Введите дату начала'
+
+        .form-group.d-flex.justify-content-between
+          = form.label :date_end, 'Окончание', class: 'col-form-label col-sm-3 text-sm-left', for: 'date_end'
+          = form.date_field :date_end, class: 'form-control col-sm-9', placeholder: 'Введите дату окончания'
+        
+        .form-group.d-flex.justify-content-between
+          = form.label :files, 'Файлы', class: 'col-form-label col-sm-3 text-sm-left', for: 'files'
+          = form.file_field :files, class: 'col-sm-9', multiple: true
+
+        .form-group.d-flex.justify-content-between
+          = form.label :email, 'Email', class: 'col-form-label col-sm-3 text-sm-left', for: 'email'
+          = form.text_field :email, class: 'form-control col-sm-9', placeholder: 'Введите название'
+        
+        .form-group.row.justify-content-around
+          = form.submit 'Отправить', class: 'btn btn-primary mb-2 btn-mr btn-width', style: 'width: 150px;', data: { disable_with: "Отправка..." }
+          = form.button 'Очистить', class: 'btn btn-danger mb-2 btn-width', type: 'reset', style: 'width: 150px;'
